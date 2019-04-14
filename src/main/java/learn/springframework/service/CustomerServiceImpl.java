@@ -24,11 +24,14 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public List<CustomerDTO> getAllCustomers() {
-		return customerRepository.findAll().stream().map(customer -> {
-			CustomerDTO customerDTO = customerMapper.customerToCustomerDTO(customer);
-			customerDTO.setCustomerUrl(getCustomerUrl(customer.getId()));
-			return customerDTO;
-		}).collect(Collectors.toList());
+		return customerRepository.findAll()
+				.stream()
+				.map(customer -> {
+					CustomerDTO customerDTO = customerMapper.customerToCustomerDTO(customer);
+					customerDTO.setCustomerUrl(getCustomerUrl(customer.getId()));
+					return customerDTO;
+				})
+				.collect(Collectors.toList());
 	}
 
 	@Override
@@ -68,19 +71,17 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerDTO patchCustomer(Long id, CustomerDTO customerDTO) {
-		return customerRepository.findById(id).map(customer -> {
-			if (customerDTO.getFirstName() != null) {
-				customer.setFirstName(customerDTO.getFirstName());
-			}
-
-			if (customerDTO.getLastName() != null) {
-				customer.setLastName(customerDTO.getLastName());
-			}
-
-			CustomerDTO returnDto = customerMapper.customerToCustomerDTO(customerRepository.save(customer));
-			returnDto.setCustomerUrl(getCustomerUrl(id));
-			return returnDto;
-		}).orElseThrow(ResourceNotFoundException::new);
+		return customerRepository.findById(id)
+				.map(customer -> {
+					if (customerDTO.getFirstName() != null) {
+						customer.setFirstName(customerDTO.getFirstName());
+					}
+		
+					if (customerDTO.getLastName() != null) {
+						customer.setLastName(customerDTO.getLastName());
+					}
+					return saveAndReturnDTO(customer);
+				}).orElseThrow(ResourceNotFoundException::new);
 	}
 
 	@Override

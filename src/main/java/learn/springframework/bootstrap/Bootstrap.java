@@ -9,18 +9,22 @@ import org.springframework.stereotype.Component;
 
 import learn.springframework.domain.Category;
 import learn.springframework.domain.Customer;
+import learn.springframework.domain.Vendor;
 import learn.springframework.repositories.CategoryRepository;
 import learn.springframework.repositories.CustomerRepository;
+import learn.springframework.repositories.VendorRepository;
 
 @Component
 public class Bootstrap implements CommandLineRunner {
 
 	private CategoryRepository categoryRepository;
 	private CustomerRepository customerRepository;
+	private VendorRepository vendorRepository;
 
-	public Bootstrap(CategoryRepository categoryRepository, CustomerRepository customerRepository) {
+	public Bootstrap(CategoryRepository categoryRepository, CustomerRepository customerRepository, VendorRepository vendorRepository) {
 		this.categoryRepository = categoryRepository;
 		this.customerRepository = customerRepository;
+		this.vendorRepository = vendorRepository;
 	}
 
 	@Override
@@ -29,6 +33,8 @@ public class Bootstrap implements CommandLineRunner {
 		loadCustomers();
 
 		loadCategories();
+		
+		loadVendors();
 	}
 
 	private void loadCategories() {
@@ -60,5 +66,20 @@ public class Bootstrap implements CommandLineRunner {
 		this.customerRepository.save(customer2);
 
 		System.out.println("Customer Data Loaded : " + this.customerRepository.count());
+	}
+	
+	private void loadVendors() {
+		String VendorsType[] = { "Reliance", "Amul", "Patanjali" };
+		List<String> vendors = Arrays.stream(VendorsType).collect(Collectors.toList());
+
+		vendors.forEach(name -> {
+			Vendor vendor = new Vendor();
+			vendor.setName(name);
+
+			vendorRepository.save(vendor);
+		});
+
+		System.out.println("Vendor Data Loaded : " + this.vendorRepository.count());
+
 	}
 }

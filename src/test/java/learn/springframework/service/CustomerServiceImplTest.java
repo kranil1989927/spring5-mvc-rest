@@ -19,6 +19,7 @@ import learn.springframework.bootstrap.Bootstrap;
 import learn.springframework.domain.Customer;
 import learn.springframework.repositories.CategoryRepository;
 import learn.springframework.repositories.CustomerRepository;
+import learn.springframework.repositories.VendorRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -29,6 +30,9 @@ public class CustomerServiceImplTest {
 
 	@Autowired
 	CategoryRepository categoryRepository;
+	
+	@Autowired
+	VendorRepository vendorRepository;
 
 	CustomerService customerService;
 
@@ -38,7 +42,7 @@ public class CustomerServiceImplTest {
 		System.out.println(customerRepository.findAll().size());
 
 		// Data Setup
-		Bootstrap bootstrap = new Bootstrap(categoryRepository, customerRepository);
+		Bootstrap bootstrap = new Bootstrap(categoryRepository, customerRepository, vendorRepository);
 		bootstrap.run();
 
 		customerService = new CustomerServiceImpl(CustomerMapper.INSTANCE, customerRepository);

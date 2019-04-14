@@ -54,7 +54,7 @@ public class CustomerController {
 	
 	@PatchMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public CustomerDTO pathCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO){
+	public CustomerDTO patchCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO){
 		return customerService.patchCustomer(id, customerDTO);
 	}
 
