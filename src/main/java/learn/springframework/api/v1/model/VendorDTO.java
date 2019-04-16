@@ -2,8 +2,11 @@ package learn.springframework.api.v1.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class VendorDTO {
+import io.swagger.annotations.ApiModelProperty;
 
+public class VendorDTO {
+	
+	@ApiModelProperty(value="Name of the vendor")
 	private String name;
 
 	@JsonProperty("vendor_url")
