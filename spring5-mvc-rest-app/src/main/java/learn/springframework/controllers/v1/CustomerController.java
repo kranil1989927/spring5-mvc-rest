@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import learn.springframework.api.v1.model.CustomerDTO;
-import learn.springframework.api.v1.model.CustomerListDTO;
 import learn.springframework.service.CustomerService;
+import learn.springframework.model.CustomerDTO;
+import learn.springframework.model.CustomerListDTO;
 
 @RestController
 @RequestMapping(CustomerController.BASE_URL)
@@ -31,7 +31,9 @@ public class CustomerController {
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public CustomerListDTO getAllCustomers(){
-		return new CustomerListDTO(customerService.getAllCustomers());
+		CustomerListDTO customerListDTO = new CustomerListDTO();
+        customerListDTO.getCustomers().addAll(customerService.getAllCustomers());
+        return customerListDTO;
 	}
 	
 	@GetMapping("/{id}")

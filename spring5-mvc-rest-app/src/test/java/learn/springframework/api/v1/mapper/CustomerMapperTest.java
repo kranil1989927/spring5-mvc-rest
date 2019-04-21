@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import learn.springframework.api.v1.mapper.CustomerMapper;
-import learn.springframework.api.v1.model.CustomerDTO;
+import learn.springframework.model.CustomerDTO;
 import learn.springframework.domain.Customer;
 
 public class CustomerMapperTest {

@@ -14,7 +14,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import learn.springframework.api.v1.mapper.CustomerMapper;
-import learn.springframework.api.v1.model.CustomerDTO;
+import learn.springframework.model.CustomerDTO;
 import learn.springframework.bootstrap.Bootstrap;
 import learn.springframework.domain.Customer;
 import learn.springframework.repositories.CategoryRepository;

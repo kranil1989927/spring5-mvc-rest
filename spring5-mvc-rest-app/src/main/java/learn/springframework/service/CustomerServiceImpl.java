@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import learn.springframework.api.v1.mapper.CustomerMapper;
-import learn.springframework.api.v1.model.CustomerDTO;
+import learn.springframework.model.CustomerDTO;
 import learn.springframework.controllers.v1.CustomerController;
 import learn.springframework.domain.Customer;
 import learn.springframework.repositories.CustomerRepository;

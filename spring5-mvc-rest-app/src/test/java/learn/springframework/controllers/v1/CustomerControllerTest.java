@@ -25,7 +25,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import learn.springframework.api.v1.model.CustomerDTO;
+import learn.springframework.model.CustomerDTO;
 import learn.springframework.controllers.RestResponseEntityExceptionHandler;
 import learn.springframework.controllers.v1.CustomerController;
 import learn.springframework.service.CustomerService;
@@ -130,7 +130,7 @@ public class CustomerControllerTest extends AbstractRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.firstName", equalTo("Fred")))
                 .andExpect(jsonPath("$.lastName", equalTo("Flintstone")))
-				.andExpect(jsonPath("$.customer_url", equalTo(CustomerController.BASE_URL + "/1")));
+				.andExpect(jsonPath("$.customerUrl", equalTo(CustomerController.BASE_URL + "/1")));
     }
 	
 	@Test
@@ -154,7 +154,7 @@ public class CustomerControllerTest extends AbstractRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.firstName", equalTo("Fred")))
                 .andExpect(jsonPath("$.lastName", equalTo("Flintstone")))
-				.andExpect(jsonPath("$.customer_url", equalTo(CustomerController.BASE_URL + "/1")));
+				.andExpect(jsonPath("$.customerUrl", equalTo(CustomerController.BASE_URL + "/1")));
     }
 	
 	@Test

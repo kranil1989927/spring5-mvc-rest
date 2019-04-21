@@ -16,7 +16,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import learn.springframework.api.v1.mapper.CustomerMapper;
-import learn.springframework.api.v1.model.CustomerDTO;
+import learn.springframework.model.CustomerDTO;
 import learn.springframework.domain.Customer;
 import learn.springframework.repositories.CustomerRepository;
 

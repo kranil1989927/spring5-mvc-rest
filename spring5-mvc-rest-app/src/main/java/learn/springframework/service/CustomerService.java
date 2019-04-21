@@ -1,8 +1,7 @@
 package learn.springframework.service;
 
 import java.util.List;
-
-import learn.springframework.api.v1.model.CustomerDTO;
+import learn.springframework.model.CustomerDTO;
 
 public interface CustomerService {
 
